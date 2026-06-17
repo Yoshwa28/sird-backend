@@ -1,0 +1,33 @@
+﻿# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Java
+*.class
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Variables locales
+.env
+.env.*
+application-local.yml
+application-dev-local.yml
+
+# Evidencias pesadas opcionales
+*.tmp
+
+# Docker local
+docker-data/
+minio-data/
+postgres-data/
+
+# Logs
+logs/

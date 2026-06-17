@@ -1,0 +1,91 @@
+﻿[
+    {
+        "caso":  "HU-001/HU-002 - Consultar configuraciÃ³n inicial",
+        "exitoso":  true,
+        "status":  200,
+        "respuesta":  {
+                          "resultado":  true,
+                          "mensaje":  "Configuración documental obtenida correctamente.",
+                          "datos":  {
+                                        "id":  1,
+                                        "periodoRetencionAnios":  7,
+                                        "clasificacionPorDefecto":  "PUBLICO",
+                                        "activo":  true,
+                                        "creadoEn":  "2026-06-17T15:27:41.80927Z",
+                                        "actualizadoEn":  "2026-06-17T15:45:27.310622Z"
+                                    },
+                          "fechaHora":  "2026-06-17T10:49:16.7921639-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-001/HU-002 - Actualizar configuraciÃ³n vÃ¡lida",
+        "exitoso":  true,
+        "status":  200,
+        "request":  {
+                        "periodoRetencionAnios":  7,
+                        "clasificacionPorDefecto":  "PUBLICO"
+                    },
+        "respuesta":  {
+                          "resultado":  true,
+                          "mensaje":  "Configuración documental actualizada correctamente.",
+                          "datos":  {
+                                        "id":  1,
+                                        "periodoRetencionAnios":  7,
+                                        "clasificacionPorDefecto":  "PUBLICO",
+                                        "activo":  true,
+                                        "creadoEn":  "2026-06-17T15:27:41.80927Z",
+                                        "actualizadoEn":  "2026-06-17T15:45:27.310622Z"
+                                    },
+                          "fechaHora":  "2026-06-17T10:49:16.867023-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-001 - Error periodo menor a 1",
+        "exitoso":  false,
+        "status":  400,
+        "request":  {
+                        "periodoRetencionAnios":  0,
+                        "clasificacionPorDefecto":  "PUBLICO"
+                    },
+        "respuesta":  {
+                          "resultado":  false,
+                          "mensaje":  "Error de validación.",
+                          "datos":  null,
+                          "error":  {
+                                        "codigo":  "ERROR_VALIDACION",
+                                        "estadoHttp":  400,
+                                        "detalles":  [
+                                                         {
+                                                             "campo":  "periodoRetencionAnios",
+                                                             "mensaje":  "El período de retención debe ser como mínimo 1 año."
+                                                         }
+                                                     ],
+                                        "trazaId":  "66260ae2-c4de-48e0-ad03-8c366987c4ba"
+                                    },
+                          "fechaHora":  "2026-06-17T10:49:16.8740725-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-002 - Error clasificaciÃ³n RESTRINGIDO no permitida",
+        "exitoso":  false,
+        "status":  400,
+        "request":  {
+                        "periodoRetencionAnios":  5,
+                        "clasificacionPorDefecto":  "RESTRINGIDO"
+                    },
+        "respuesta":  {
+                          "resultado":  false,
+                          "mensaje":  "Solo PUBLICO o INTERNO pueden configurarse como clasificación por defecto.",
+                          "datos":  null,
+                          "error":  {
+                                        "codigo":  "ERROR_VALIDACION",
+                                        "estadoHttp":  400,
+                                        "detalles":  [
+
+                                                     ],
+                                        "trazaId":  "12479da9-da82-479d-a468-b5d00e9160e1"
+                                    },
+                          "fechaHora":  "2026-06-17T10:49:16.9041468-05:00"
+                      }
+    }
+]

@@ -1,0 +1,36 @@
+### HU-001/HU-002 - Consultar configuración documental activa
+GET http://localhost:8080/api/v1/admin/configuracion/documental
+Accept: application/json
+
+
+### HU-001/HU-002 - Actualizar configuración correctamente
+PUT http://localhost:8080/api/v1/admin/configuracion/documental
+Content-Type: application/json
+Accept: application/json
+
+{
+  "periodoRetencionAnios": 7,
+  "clasificacionPorDefecto": "PUBLICO"
+}
+
+
+### HU-001 - Error: periodo menor a 1
+PUT http://localhost:8080/api/v1/admin/configuracion/documental
+Content-Type: application/json
+Accept: application/json
+
+{
+  "periodoRetencionAnios": 0,
+  "clasificacionPorDefecto": "PUBLICO"
+}
+
+
+### HU-002 - Error: clasificacion no permitida como default
+PUT http://localhost:8080/api/v1/admin/configuracion/documental
+Content-Type: application/json
+Accept: application/json
+
+{
+  "periodoRetencionAnios": 5,
+  "clasificacionPorDefecto": "RESTRINGIDO"
+}
