@@ -1,0 +1,111 @@
+﻿### HU-003 - Consultar configuración JWT
+GET http://localhost:8080/api/v1/admin/configuracion/seguridad-jwt
+Accept: application/json
+
+
+### HU-003 - Actualizar configuración JWT válida
+PUT http://localhost:8080/api/v1/admin/configuracion/seguridad-jwt
+Content-Type: application/json
+Accept: application/json
+
+{
+  "accessTokenHoras": 12,
+  "refreshTokenDias": 30,
+  "intentosFallidosMax": 5,
+  "bloqueoMinutos": 20
+}
+
+
+### HU-003 - Error: access token mayor a 24 horas
+PUT http://localhost:8080/api/v1/admin/configuracion/seguridad-jwt
+Content-Type: application/json
+Accept: application/json
+
+{
+  "accessTokenHoras": 25,
+  "refreshTokenDias": 30,
+  "intentosFallidosMax": 5,
+  "bloqueoMinutos": 20
+}
+
+
+### HU-003 - Error: refresh token mayor a 90 días
+PUT http://localhost:8080/api/v1/admin/configuracion/seguridad-jwt
+Content-Type: application/json
+Accept: application/json
+
+{
+  "accessTokenHoras": 12,
+  "refreshTokenDias": 91,
+  "intentosFallidosMax": 5,
+  "bloqueoMinutos": 20
+}
+
+
+### HU-004 - Listar feriados
+GET http://localhost:8080/api/v1/admin/feriados
+Accept: application/json
+
+
+### HU-004 - Listar solo feriados activos
+GET http://localhost:8080/api/v1/admin/feriados?soloActivos=true
+Accept: application/json
+
+
+### HU-004 - Crear feriado válido
+POST http://localhost:8080/api/v1/admin/feriados
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombre": "Día de prueba institucional",
+  "fecha": "2026-07-15",
+  "tipo": "NACIONAL",
+  "recurrenteAnual": false
+}
+
+
+### HU-004 - Error: crear feriado duplicado Inti Raymi
+POST http://localhost:8080/api/v1/admin/feriados
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombre": "Inti Raymi duplicado",
+  "fecha": "2026-06-24",
+  "tipo": "REGIONAL_CUSCO",
+  "recurrenteAnual": true
+}
+
+
+### HU-004 - Actualizar feriado ID 1
+PUT http://localhost:8080/api/v1/admin/feriados/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombre": "Inti Raymi",
+  "fecha": "2026-06-24",
+  "tipo": "REGIONAL_CUSCO",
+  "recurrenteAnual": true
+}
+
+
+### HU-004 - Desactivar feriado ID 1
+PATCH http://localhost:8080/api/v1/admin/feriados/1/estado
+Content-Type: application/json
+Accept: application/json
+
+{
+  "activo": false
+}
+
+
+### HU-004 - Activar feriado ID 1
+PATCH http://localhost:8080/api/v1/admin/feriados/1/estado
+Content-Type: application/json
+Accept: application/json
+
+{
+  "activo": true
+}

@@ -1,0 +1,249 @@
+﻿[
+    {
+        "caso":  "HU-003 - Consultar configuración JWT",
+        "exitoso":  true,
+        "status":  200,
+        "respuesta":  {
+                          "resultado":  true,
+                          "mensaje":  "Configuración JWT obtenida correctamente.",
+                          "datos":  {
+                                        "id":  1,
+                                        "accessTokenHoras":  12,
+                                        "refreshTokenDias":  30,
+                                        "intentosFallidosMax":  5,
+                                        "bloqueoMinutos":  20,
+                                        "versionSeguridad":  2,
+                                        "activo":  true,
+                                        "creadoEn":  "2026-06-17T17:05:55.372361Z",
+                                        "actualizadoEn":  "2026-06-17T17:07:46.750571Z"
+                                    },
+                          "fechaHora":  "2026-06-17T12:09:10.0626662-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-003 - Actualizar configuración JWT válida",
+        "exitoso":  true,
+        "status":  200,
+        "request":  {
+                        "refreshTokenDias":  30,
+                        "accessTokenHoras":  12,
+                        "bloqueoMinutos":  20,
+                        "intentosFallidosMax":  5
+                    },
+        "respuesta":  {
+                          "resultado":  true,
+                          "mensaje":  "Configuración JWT actualizada correctamente. Las sesiones activas serán invalidadas según la versión de seguridad.",
+                          "datos":  {
+                                        "id":  1,
+                                        "accessTokenHoras":  12,
+                                        "refreshTokenDias":  30,
+                                        "intentosFallidosMax":  5,
+                                        "bloqueoMinutos":  20,
+                                        "versionSeguridad":  3,
+                                        "activo":  true,
+                                        "creadoEn":  "2026-06-17T17:05:55.372361Z",
+                                        "actualizadoEn":  "2026-06-17T17:07:46.750571Z"
+                                    },
+                          "fechaHora":  "2026-06-17T12:09:10.1527144-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-003 - Error access token mayor a 24",
+        "exitoso":  false,
+        "status":  400,
+        "request":  {
+                        "refreshTokenDias":  30,
+                        "accessTokenHoras":  25,
+                        "bloqueoMinutos":  20,
+                        "intentosFallidosMax":  5
+                    },
+        "respuesta":  {
+                          "resultado":  false,
+                          "mensaje":  "Error de validación.",
+                          "datos":  null,
+                          "error":  {
+                                        "codigo":  "ERROR_VALIDACION",
+                                        "estadoHttp":  400,
+                                        "detalles":  [
+                                                         {
+                                                             "campo":  "accessTokenHoras",
+                                                             "mensaje":  "El access token no debe superar 24 horas."
+                                                         }
+                                                     ],
+                                        "trazaId":  "dc9203e0-7471-4423-ba84-5f3d5d070a84"
+                                    },
+                          "fechaHora":  "2026-06-17T12:09:10.166838-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-003 - Error refresh token mayor a 90",
+        "exitoso":  false,
+        "status":  400,
+        "request":  {
+                        "refreshTokenDias":  91,
+                        "accessTokenHoras":  12,
+                        "bloqueoMinutos":  20,
+                        "intentosFallidosMax":  5
+                    },
+        "respuesta":  {
+                          "resultado":  false,
+                          "mensaje":  "Error de validación.",
+                          "datos":  null,
+                          "error":  {
+                                        "codigo":  "ERROR_VALIDACION",
+                                        "estadoHttp":  400,
+                                        "detalles":  [
+                                                         {
+                                                             "campo":  "refreshTokenDias",
+                                                             "mensaje":  "El refresh token no debe superar 90 días."
+                                                         }
+                                                     ],
+                                        "trazaId":  "766afd4a-19f9-40fc-8ed5-a6976cb450cb"
+                                    },
+                          "fechaHora":  "2026-06-17T12:09:10.211687-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-004 - Listar feriados",
+        "exitoso":  true,
+        "status":  200,
+        "respuesta":  {
+                          "resultado":  true,
+                          "mensaje":  "Listado de feriados obtenido correctamente.",
+                          "datos":  [
+                                        {
+                                            "id":  1,
+                                            "nombre":  "Inti Raymi",
+                                            "fecha":  "2026-06-24",
+                                            "tipo":  "REGIONAL_CUSCO",
+                                            "recurrenteAnual":  true,
+                                            "activo":  true,
+                                            "creadoEn":  "2026-06-17T17:05:55.372361Z",
+                                            "actualizadoEn":  null
+                                        }
+                                    ],
+                          "fechaHora":  "2026-06-17T12:09:10.2265623-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-004 - Listar feriados activos",
+        "exitoso":  true,
+        "status":  200,
+        "respuesta":  {
+                          "resultado":  true,
+                          "mensaje":  "Listado de feriados obtenido correctamente.",
+                          "datos":  [
+                                        {
+                                            "id":  1,
+                                            "nombre":  "Inti Raymi",
+                                            "fecha":  "2026-06-24",
+                                            "tipo":  "REGIONAL_CUSCO",
+                                            "recurrenteAnual":  true,
+                                            "activo":  true,
+                                            "creadoEn":  "2026-06-17T17:05:55.372361Z",
+                                            "actualizadoEn":  null
+                                        }
+                                    ],
+                          "fechaHora":  "2026-06-17T12:09:10.2392719-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-004 - Crear feriado válido",
+        "exitoso":  false,
+        "status":  500,
+        "request":  {
+                        "recurrenteAnual":  false,
+                        "nombre":  "Día de prueba institucional",
+                        "tipo":  "NACIONAL",
+                        "fecha":  "2026-07-15"
+                    },
+        "respuesta":  {
+                          "resultado":  false,
+                          "mensaje":  "Error interno del servidor.",
+                          "datos":  null,
+                          "error":  {
+                                        "codigo":  "ERROR_INTERNO",
+                                        "estadoHttp":  500,
+                                        "detalles":  [
+                                                         {
+                                                             "campo":  null,
+                                                             "mensaje":  "JSON parse error: Invalid UTF-8 middle byte 0x61"
+                                                         }
+                                                     ],
+                                        "trazaId":  "d6d14916-ac4b-4183-ab41-e24aa79166a4"
+                                    },
+                          "fechaHora":  "2026-06-17T12:09:10.2477248-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-004 - Error feriado duplicado Inti Raymi",
+        "exitoso":  false,
+        "status":  409,
+        "request":  {
+                        "recurrenteAnual":  true,
+                        "nombre":  "Inti Raymi duplicado",
+                        "tipo":  "REGIONAL_CUSCO",
+                        "fecha":  "2026-06-24"
+                    },
+        "respuesta":  {
+                          "resultado":  false,
+                          "mensaje":  "Ya existe un feriado registrado para la fecha y tipo indicados.",
+                          "datos":  null,
+                          "error":  {
+                                        "codigo":  "ERROR_REGLA_NEGOCIO",
+                                        "estadoHttp":  409,
+                                        "detalles":  [
+
+                                                     ],
+                                        "trazaId":  "6fc034c1-2267-42af-8178-2fa621e94591"
+                                    },
+                          "fechaHora":  "2026-06-17T12:09:10.2807525-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-004 - Desactivar feriado ID 1",
+        "exitoso":  true,
+        "status":  200,
+        "request":  {
+                        "activo":  false
+                    },
+        "respuesta":  {
+                          "resultado":  true,
+                          "mensaje":  "Estado del feriado institucional actualizado correctamente.",
+                          "datos":  {
+                                        "id":  1,
+                                        "nombre":  "Inti Raymi",
+                                        "fecha":  "2026-06-24",
+                                        "tipo":  "REGIONAL_CUSCO",
+                                        "recurrenteAnual":  true,
+                                        "activo":  false,
+                                        "creadoEn":  "2026-06-17T17:05:55.372361Z",
+                                        "actualizadoEn":  null
+                                    },
+                          "fechaHora":  "2026-06-17T12:09:10.3072354-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-004 - Activar feriado ID 1",
+        "exitoso":  true,
+        "status":  200,
+        "request":  {
+                        "activo":  true
+                    },
+        "respuesta":  {
+                          "resultado":  true,
+                          "mensaje":  "Estado del feriado institucional actualizado correctamente.",
+                          "datos":  {
+                                        "id":  1,
+                                        "nombre":  "Inti Raymi",
+                                        "fecha":  "2026-06-24",
+                                        "tipo":  "REGIONAL_CUSCO",
+                                        "recurrenteAnual":  true,
+                                        "activo":  true,
+                                        "creadoEn":  "2026-06-17T17:05:55.372361Z",
+                                        "actualizadoEn":  "2026-06-17T17:09:10.302356Z"
+                                    },
+                          "fechaHora":  "2026-06-17T12:09:10.321689-05:00"
+                      }
+    }
+]
