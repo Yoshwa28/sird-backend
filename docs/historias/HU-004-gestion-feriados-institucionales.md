@@ -1,4 +1,4 @@
-﻿# HU-004 - Admin gestiona feriados institucionales para el timer
+# HU-004 - Admin gestiona feriados institucionales para el timer
 
 **Proyecto:** SIRD  
 **Versión:** v1.0  

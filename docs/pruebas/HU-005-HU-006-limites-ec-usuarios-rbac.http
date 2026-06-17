@@ -1,0 +1,108 @@
+### HU-005 - Listar límites del Espacio Colaborativo
+GET http://localhost:8080/api/v1/admin/configuracion/limites-ec
+Accept: application/json
+
+
+### HU-005 - Actualizar límite EXPEDIENTE válido
+PUT http://localhost:8080/api/v1/admin/configuracion/limites-ec/EXPEDIENTE
+Content-Type: application/json
+Accept: application/json
+
+{
+  "limiteGb": 25
+}
+
+
+### HU-005 - Límite inválido mayor a 100 GB
+PUT http://localhost:8080/api/v1/admin/configuracion/limites-ec/PLAN
+Content-Type: application/json
+Accept: application/json
+
+{
+  "limiteGb": 101
+}
+
+
+### HU-006 - Listar perfiles RBAC
+GET http://localhost:8080/api/v1/admin/perfiles
+Accept: application/json
+
+
+### HU-006 - Listar usuarios
+GET http://localhost:8080/api/v1/admin/usuarios
+Accept: application/json
+
+
+### HU-006 - Listar usuarios activos
+GET http://localhost:8080/api/v1/admin/usuarios?soloActivos=true
+Accept: application/json
+
+
+### HU-006 - Crear usuario válido
+POST http://localhost:8080/api/v1/admin/usuarios
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombres": "Juan",
+  "apellidos": "Puma Quispe",
+  "correo": "juan.puma@regioncusco.gob.pe",
+  "cargo": "Especialista Documental",
+  "unidad": "Gerencia Regional de Planeamiento",
+  "perfil": "ESPECIALISTA_RESPONSABLE"
+}
+
+
+### HU-006 - Crear usuario duplicado
+POST http://localhost:8080/api/v1/admin/usuarios
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombres": "Juan",
+  "apellidos": "Puma Quispe",
+  "correo": "juan.puma@regioncusco.gob.pe",
+  "cargo": "Especialista Documental",
+  "unidad": "Gerencia Regional de Planeamiento",
+  "perfil": "ESPECIALISTA_RESPONSABLE"
+}
+
+
+### HU-006 - Obtener usuario por ID
+GET http://localhost:8080/api/v1/admin/usuarios/1
+Accept: application/json
+
+
+### HU-006 - Actualizar usuario
+PUT http://localhost:8080/api/v1/admin/usuarios/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombres": "Administrador",
+  "apellidos": "SIRD",
+  "correo": "admin.sird@regioncusco.gob.pe",
+  "cargo": "Administrador del Sistema",
+  "unidad": "Oficina de Tecnologías de la Información",
+  "perfil": "ADMIN_SIRD"
+}
+
+
+### HU-006 - Desactivar usuario
+PATCH http://localhost:8080/api/v1/admin/usuarios/1/estado
+Content-Type: application/json
+Accept: application/json
+
+{
+  "activo": false
+}
+
+
+### HU-006 - Activar usuario
+PATCH http://localhost:8080/api/v1/admin/usuarios/1/estado
+Content-Type: application/json
+Accept: application/json
+
+{
+  "activo": true
+}

@@ -1,4 +1,4 @@
-﻿# SIRD - Contrato API M09 Configuración JWT y Feriados
+# SIRD - Contrato API M09 Configuración JWT y Feriados
 
 **Versión:** v1.0  
 **Fecha:** 17/06/2026  

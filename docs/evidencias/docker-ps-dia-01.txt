@@ -1,3 +1,0 @@
-﻿CONTAINER ID   IMAGE                COMMAND                  CREATED          STATUS          PORTS                                                             NAMES
-0b1cf6294acb   postgres:16          "docker-entrypoint.s…"   33 minutes ago   Up 32 minutes   0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp                       sird-postgres
-5e50c222124d   minio/minio:latest   "/usr/bin/docker-ent…"   33 minutes ago   Up 32 minutes   0.0.0.0:9000-9001->9000-9001/tcp, [::]:9000-9001->9000-9001/tcp   sird-minio

@@ -1,0 +1,242 @@
+[
+    {
+        "caso":  "HU-005 - Listar límites EC",
+        "exitoso":  true,
+        "status":  200,
+        "request":  null,
+        "respuesta":  {
+                          "resultado":  true,
+                          "mensaje":  "Límites del Espacio Colaborativo obtenidos correctamente.",
+                          "datos":  [
+                                        {
+                                            "id":  2,
+                                            "tipoEspacio":  "PLAN",
+                                            "limiteGb":  20,
+                                            "activo":  true,
+                                            "creadoEn":  "2026-06-17T19:41:05.288826Z",
+                                            "actualizadoEn":  null
+                                        },
+                                        {
+                                            "id":  3,
+                                            "tipoEspacio":  "PERFIL",
+                                            "limiteGb":  5,
+                                            "activo":  true,
+                                            "creadoEn":  "2026-06-17T19:41:05.288826Z",
+                                            "actualizadoEn":  null
+                                        },
+                                        {
+                                            "id":  1,
+                                            "tipoEspacio":  "EXPEDIENTE",
+                                            "limiteGb":  25,
+                                            "activo":  true,
+                                            "creadoEn":  "2026-06-17T19:41:05.288826Z",
+                                            "actualizadoEn":  "2026-06-17T19:48:09.304128Z"
+                                        }
+                                    ],
+                          "fechaHora":  "2026-06-17T14:49:33.3019914-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-005 - Actualizar límite EXPEDIENTE válido",
+        "exitoso":  true,
+        "status":  200,
+        "request":  {
+                        "limiteGb":  25
+                    },
+        "respuesta":  {
+                          "resultado":  true,
+                          "mensaje":  "Límite del Espacio Colaborativo actualizado correctamente.",
+                          "datos":  {
+                                        "id":  1,
+                                        "tipoEspacio":  "EXPEDIENTE",
+                                        "limiteGb":  25,
+                                        "activo":  true,
+                                        "creadoEn":  "2026-06-17T19:41:05.288826Z",
+                                        "actualizadoEn":  "2026-06-17T19:48:09.304128Z"
+                                    },
+                          "fechaHora":  "2026-06-17T14:49:33.3194902-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-005 - Límite inválido mayor a 100 GB",
+        "exitoso":  false,
+        "status":  400,
+        "request":  {
+                        "limiteGb":  101
+                    },
+        "respuesta":  {
+                          "resultado":  false,
+                          "mensaje":  "Error de validación.",
+                          "datos":  null,
+                          "error":  {
+                                        "codigo":  "ERROR_VALIDACION",
+                                        "estadoHttp":  400,
+                                        "detalles":  [
+                                                         {
+                                                             "campo":  "limiteGb",
+                                                             "mensaje":  "El límite del Espacio Colaborativo no debe superar 100 GB."
+                                                         }
+                                                     ],
+                                        "trazaId":  "60e8ace1-6372-452a-b660-e53f33551e76"
+                                    },
+                          "fechaHora":  "2026-06-17T14:49:33.3248054-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-006 - Listar perfiles RBAC",
+        "exitoso":  true,
+        "status":  200,
+        "request":  null,
+        "respuesta":  {
+                          "resultado":  true,
+                          "mensaje":  "Listado de perfiles RBAC obtenido correctamente.",
+                          "datos":  [
+                                        "ADMIN_SIRD",
+                                        "GERENTE_SUBGERENTE",
+                                        "JEFE_DEPENDENCIA_PROYECTO",
+                                        "ESPECIALISTA_RESPONSABLE",
+                                        "TECNICO_ADMINISTRATIVO"
+                                    ],
+                          "fechaHora":  "2026-06-17T14:49:33.3336933-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-006 - Listar usuarios",
+        "exitoso":  true,
+        "status":  200,
+        "request":  null,
+        "respuesta":  {
+                          "resultado":  true,
+                          "mensaje":  "Listado de usuarios obtenido correctamente.",
+                          "datos":  [
+                                        {
+                                            "id":  1,
+                                            "nombres":  "Administrador",
+                                            "apellidos":  "SIRD",
+                                            "correo":  "admin.sird@regioncusco.gob.pe",
+                                            "cargo":  "Administrador del Sistema",
+                                            "unidad":  "Oficina de Tecnologías de la Información",
+                                            "perfil":  "ADMIN_SIRD",
+                                            "activo":  true,
+                                            "creadoEn":  "2026-06-17T19:41:05.288826Z",
+                                            "actualizadoEn":  null
+                                        },
+                                        {
+                                            "id":  2,
+                                            "nombres":  "Juan",
+                                            "apellidos":  "Puma Quispe",
+                                            "correo":  "juan.puma@regioncusco.gob.pe",
+                                            "cargo":  "Especialista Documental",
+                                            "unidad":  "Gerencia Regional de Planeamiento",
+                                            "perfil":  "ESPECIALISTA_RESPONSABLE",
+                                            "activo":  true,
+                                            "creadoEn":  "2026-06-17T19:48:40.881352Z",
+                                            "actualizadoEn":  null
+                                        }
+                                    ],
+                          "fechaHora":  "2026-06-17T14:49:33.342352-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-006 - Crear usuario válido",
+        "exitoso":  false,
+        "status":  409,
+        "request":  {
+                        "unidad":  "Gerencia Regional de Planeamiento",
+                        "perfil":  "ESPECIALISTA_RESPONSABLE",
+                        "apellidos":  "Puma Quispe",
+                        "correo":  "juan.puma@regioncusco.gob.pe",
+                        "cargo":  "Especialista Documental",
+                        "nombres":  "Juan"
+                    },
+        "respuesta":  {
+                          "resultado":  false,
+                          "mensaje":  "Ya existe un usuario registrado con el correo indicado.",
+                          "datos":  null,
+                          "error":  {
+                                        "codigo":  "ERROR_REGLA_NEGOCIO",
+                                        "estadoHttp":  409,
+                                        "detalles":  [
+
+                                                     ],
+                                        "trazaId":  "856425e8-e877-43e1-b92d-43b70b885e09"
+                                    },
+                          "fechaHora":  "2026-06-17T14:49:33.3518628-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-006 - Crear usuario duplicado",
+        "exitoso":  false,
+        "status":  409,
+        "request":  {
+                        "unidad":  "Gerencia Regional de Planeamiento",
+                        "perfil":  "ESPECIALISTA_RESPONSABLE",
+                        "apellidos":  "Puma Quispe",
+                        "correo":  "juan.puma@regioncusco.gob.pe",
+                        "cargo":  "Especialista Documental",
+                        "nombres":  "Juan"
+                    },
+        "respuesta":  {
+                          "resultado":  false,
+                          "mensaje":  "Ya existe un usuario registrado con el correo indicado.",
+                          "datos":  null,
+                          "error":  {
+                                        "codigo":  "ERROR_REGLA_NEGOCIO",
+                                        "estadoHttp":  409,
+                                        "detalles":  [
+
+                                                     ],
+                                        "trazaId":  "03c7f646-7d1b-48f5-9607-6480b46ae4e4"
+                                    },
+                          "fechaHora":  "2026-06-17T14:49:33.3613955-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-006 - Obtener usuario ID 1",
+        "exitoso":  true,
+        "status":  200,
+        "request":  null,
+        "respuesta":  {
+                          "resultado":  true,
+                          "mensaje":  "Usuario obtenido correctamente.",
+                          "datos":  {
+                                        "id":  1,
+                                        "nombres":  "Administrador",
+                                        "apellidos":  "SIRD",
+                                        "correo":  "admin.sird@regioncusco.gob.pe",
+                                        "cargo":  "Administrador del Sistema",
+                                        "unidad":  "Oficina de Tecnologías de la Información",
+                                        "perfil":  "ADMIN_SIRD",
+                                        "activo":  true,
+                                        "creadoEn":  "2026-06-17T19:41:05.288826Z",
+                                        "actualizadoEn":  null
+                                    },
+                          "fechaHora":  "2026-06-17T14:49:33.3787909-05:00"
+                      }
+    },
+    {
+        "caso":  "HU-006 - Activar usuario ID 1",
+        "exitoso":  true,
+        "status":  200,
+        "request":  {
+                        "activo":  true
+                    },
+        "respuesta":  {
+                          "resultado":  true,
+                          "mensaje":  "Estado del usuario SIRD actualizado correctamente.",
+                          "datos":  {
+                                        "id":  1,
+                                        "nombres":  "Administrador",
+                                        "apellidos":  "SIRD",
+                                        "correo":  "admin.sird@regioncusco.gob.pe",
+                                        "cargo":  "Administrador del Sistema",
+                                        "unidad":  "Oficina de Tecnologías de la Información",
+                                        "perfil":  "ADMIN_SIRD",
+                                        "activo":  true,
+                                        "creadoEn":  "2026-06-17T19:41:05.288826Z",
+                                        "actualizadoEn":  null
+                                    },
+                          "fechaHora":  "2026-06-17T14:49:33.3905332-05:00"
+                      }
+    }
+]

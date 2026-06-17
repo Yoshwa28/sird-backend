@@ -1,4 +1,4 @@
-﻿$BaseUrl = "http://localhost:8080"
+$BaseUrl = "http://localhost:8080"
 $Fecha = Get-Date -Format "yyyyMMdd_HHmmss"
 $EvidenciasDir = ".\docs\evidencias"
 $EvidenciaFile = "$EvidenciasDir\HU-003-HU-004_$Fecha.json"

@@ -1,0 +1,1173 @@
+{
+    "openapi":  "3.1.0",
+    "info":  {
+                 "title":  "SIRD API",
+                 "description":  "API Backend del Sistema Institucional de Repositorio Digital - SIRD",
+                 "contact":  {
+                                 "name":  "Gobierno Regional del Cusco",
+                                 "email":  "soporte.sird@regioncusco.gob.pe"
+                             },
+                 "license":  {
+                                 "name":  "Uso institucional"
+                             },
+                 "version":  "v1.0"
+             },
+    "servers":  [
+                    {
+                        "url":  "http://localhost:8080",
+                        "description":  "Generated server url"
+                    }
+                ],
+    "tags":  [
+                 {
+                     "name":  "M09 - Administración del Sistema",
+                     "description":  "Configuración de límites del Espacio Colaborativo"
+                 },
+                 {
+                     "name":  "M09 - Administración del Sistema",
+                     "description":  "Gestión de feriados institucionales"
+                 },
+                 {
+                     "name":  "M09 - Administración del Sistema",
+                     "description":  "Gestión de usuarios y perfiles RBAC"
+                 },
+                 {
+                     "name":  "M09 - Administración del Sistema",
+                     "description":  "Configuración documental del SIRD"
+                 },
+                 {
+                     "name":  "M09 - Administración del Sistema",
+                     "description":  "Configuración de seguridad JWT del SIRD"
+                 }
+             ],
+    "paths":  {
+                  "/api/v1/admin/usuarios/{usuarioId}":  {
+                                                             "get":  {
+                                                                         "tags":  [
+                                                                                      "M09 - Administración del Sistema"
+                                                                                  ],
+                                                                         "summary":  "Obtener usuario SIRD por ID",
+                                                                         "operationId":  "obtenerPorId",
+                                                                         "parameters":  [
+                                                                                            {
+                                                                                                "name":  "usuarioId",
+                                                                                                "in":  "path",
+                                                                                                "required":  true,
+                                                                                                "schema":  {
+                                                                                                               "type":  "integer",
+                                                                                                               "format":  "int64"
+                                                                                                           }
+                                                                                            }
+                                                                                        ],
+                                                                         "responses":  {
+                                                                                           "200":  {
+                                                                                                       "description":  "OK",
+                                                                                                       "content":  {
+                                                                                                                       "*/*":  {
+                                                                                                                                   "schema":  {
+                                                                                                                                                  "$ref":  "#/components/schemas/RespuestaApiUsuarioSirdResponse"
+                                                                                                                                              }
+                                                                                                                               }
+                                                                                                                   }
+                                                                                                   }
+                                                                                       }
+                                                                     },
+                                                             "put":  {
+                                                                         "tags":  [
+                                                                                      "M09 - Administración del Sistema"
+                                                                                  ],
+                                                                         "summary":  "Actualizar usuario SIRD",
+                                                                         "operationId":  "actualizar",
+                                                                         "parameters":  [
+                                                                                            {
+                                                                                                "name":  "usuarioId",
+                                                                                                "in":  "path",
+                                                                                                "required":  true,
+                                                                                                "schema":  {
+                                                                                                               "type":  "integer",
+                                                                                                               "format":  "int64"
+                                                                                                           }
+                                                                                            }
+                                                                                        ],
+                                                                         "requestBody":  {
+                                                                                             "content":  {
+                                                                                                             "application/json":  {
+                                                                                                                                      "schema":  {
+                                                                                                                                                     "$ref":  "#/components/schemas/ActualizarUsuarioSirdRequest"
+                                                                                                                                                 }
+                                                                                                                                  }
+                                                                                                         },
+                                                                                             "required":  true
+                                                                                         },
+                                                                         "responses":  {
+                                                                                           "200":  {
+                                                                                                       "description":  "OK",
+                                                                                                       "content":  {
+                                                                                                                       "*/*":  {
+                                                                                                                                   "schema":  {
+                                                                                                                                                  "$ref":  "#/components/schemas/RespuestaApiUsuarioSirdResponse"
+                                                                                                                                              }
+                                                                                                                               }
+                                                                                                                   }
+                                                                                                   }
+                                                                                       }
+                                                                     }
+                                                         },
+                  "/api/v1/admin/feriados/{feriadoId}":  {
+                                                             "put":  {
+                                                                         "tags":  [
+                                                                                      "M09 - Administración del Sistema"
+                                                                                  ],
+                                                                         "summary":  "Actualizar feriado institucional",
+                                                                         "description":  "Actualiza los datos de un feriado institucional existente.",
+                                                                         "operationId":  "actualizar_1",
+                                                                         "parameters":  [
+                                                                                            {
+                                                                                                "name":  "feriadoId",
+                                                                                                "in":  "path",
+                                                                                                "required":  true,
+                                                                                                "schema":  {
+                                                                                                               "type":  "integer",
+                                                                                                               "format":  "int64"
+                                                                                                           }
+                                                                                            }
+                                                                                        ],
+                                                                         "requestBody":  {
+                                                                                             "content":  {
+                                                                                                             "application/json":  {
+                                                                                                                                      "schema":  {
+                                                                                                                                                     "$ref":  "#/components/schemas/ActualizarFeriadoInstitucionalRequest"
+                                                                                                                                                 }
+                                                                                                                                  }
+                                                                                                         },
+                                                                                             "required":  true
+                                                                                         },
+                                                                         "responses":  {
+                                                                                           "200":  {
+                                                                                                       "description":  "OK",
+                                                                                                       "content":  {
+                                                                                                                       "*/*":  {
+                                                                                                                                   "schema":  {
+                                                                                                                                                  "$ref":  "#/components/schemas/RespuestaApiFeriadoInstitucionalResponse"
+                                                                                                                                              }
+                                                                                                                               }
+                                                                                                                   }
+                                                                                                   }
+                                                                                       }
+                                                                     }
+                                                         },
+                  "/api/v1/admin/configuracion/seguridad-jwt":  {
+                                                                    "get":  {
+                                                                                "tags":  [
+                                                                                             "M09 - Administración del Sistema"
+                                                                                         ],
+                                                                                "summary":  "Obtener configuración JWT activa",
+                                                                                "description":  "Consulta los parámetros de seguridad JWT configurados en el SIRD.",
+                                                                                "operationId":  "obtenerConfiguracion",
+                                                                                "responses":  {
+                                                                                                  "200":  {
+                                                                                                              "description":  "OK",
+                                                                                                              "content":  {
+                                                                                                                              "*/*":  {
+                                                                                                                                          "schema":  {
+                                                                                                                                                         "$ref":  "#/components/schemas/RespuestaApiConfiguracionSeguridadJwtResponse"
+                                                                                                                                                     }
+                                                                                                                                      }
+                                                                                                                          }
+                                                                                                          }
+                                                                                              }
+                                                                            },
+                                                                    "put":  {
+                                                                                "tags":  [
+                                                                                             "M09 - Administración del Sistema"
+                                                                                         ],
+                                                                                "summary":  "Actualizar configuración JWT",
+                                                                                "description":  "Actualiza parámetros JWT e incrementa la versión de seguridad para invalidación futura de sesiones.",
+                                                                                "operationId":  "actualizarConfiguracion",
+                                                                                "requestBody":  {
+                                                                                                    "content":  {
+                                                                                                                    "application/json":  {
+                                                                                                                                             "schema":  {
+                                                                                                                                                            "$ref":  "#/components/schemas/ActualizarConfiguracionSeguridadJwtRequest"
+                                                                                                                                                        }
+                                                                                                                                         }
+                                                                                                                },
+                                                                                                    "required":  true
+                                                                                                },
+                                                                                "responses":  {
+                                                                                                  "200":  {
+                                                                                                              "description":  "OK",
+                                                                                                              "content":  {
+                                                                                                                              "*/*":  {
+                                                                                                                                          "schema":  {
+                                                                                                                                                         "$ref":  "#/components/schemas/RespuestaApiConfiguracionSeguridadJwtResponse"
+                                                                                                                                                     }
+                                                                                                                                      }
+                                                                                                                          }
+                                                                                                          }
+                                                                                              }
+                                                                            }
+                                                                },
+                  "/api/v1/admin/configuracion/limites-ec/{tipoEspacio}":  {
+                                                                               "put":  {
+                                                                                           "tags":  [
+                                                                                                        "M09 - Administración del Sistema"
+                                                                                                    ],
+                                                                                           "summary":  "Actualizar límite por tipo de Espacio Colaborativo",
+                                                                                           "operationId":  "actualizar_2",
+                                                                                           "parameters":  [
+                                                                                                              {
+                                                                                                                  "name":  "tipoEspacio",
+                                                                                                                  "in":  "path",
+                                                                                                                  "required":  true,
+                                                                                                                  "schema":  {
+                                                                                                                                 "type":  "string",
+                                                                                                                                 "enum":  [
+                                                                                                                                              "EXPEDIENTE",
+                                                                                                                                              "PLAN",
+                                                                                                                                              "PERFIL"
+                                                                                                                                          ]
+                                                                                                                             }
+                                                                                                              }
+                                                                                                          ],
+                                                                                           "requestBody":  {
+                                                                                                               "content":  {
+                                                                                                                               "application/json":  {
+                                                                                                                                                        "schema":  {
+                                                                                                                                                                       "$ref":  "#/components/schemas/ActualizarLimiteEspacioColaborativoRequest"
+                                                                                                                                                                   }
+                                                                                                                                                    }
+                                                                                                                           },
+                                                                                                               "required":  true
+                                                                                                           },
+                                                                                           "responses":  {
+                                                                                                             "200":  {
+                                                                                                                         "description":  "OK",
+                                                                                                                         "content":  {
+                                                                                                                                         "*/*":  {
+                                                                                                                                                     "schema":  {
+                                                                                                                                                                    "$ref":  "#/components/schemas/RespuestaApiLimiteEspacioColaborativoResponse"
+                                                                                                                                                                }
+                                                                                                                                                 }
+                                                                                                                                     }
+                                                                                                                     }
+                                                                                                         }
+                                                                                       }
+                                                                           },
+                  "/api/v1/admin/configuracion/documental":  {
+                                                                 "get":  {
+                                                                             "tags":  [
+                                                                                          "M09 - Administración del Sistema"
+                                                                                      ],
+                                                                             "summary":  "Obtener configuración documental activa",
+                                                                             "description":  "Consulta el período de retención TRD y la clasificación documental por defecto.",
+                                                                             "operationId":  "obtenerConfiguracion_1",
+                                                                             "responses":  {
+                                                                                               "200":  {
+                                                                                                           "description":  "OK",
+                                                                                                           "content":  {
+                                                                                                                           "*/*":  {
+                                                                                                                                       "schema":  {
+                                                                                                                                                      "$ref":  "#/components/schemas/RespuestaApiConfiguracionDocumentalResponse"
+                                                                                                                                                  }
+                                                                                                                                   }
+                                                                                                                       }
+                                                                                                       }
+                                                                                           }
+                                                                         },
+                                                                 "put":  {
+                                                                             "tags":  [
+                                                                                          "M09 - Administración del Sistema"
+                                                                                      ],
+                                                                             "summary":  "Actualizar configuración documental",
+                                                                             "description":  "Permite al Admin SIRD actualizar el período de retención TRD y la clasificación por defecto.",
+                                                                             "operationId":  "actualizarConfiguracion_1",
+                                                                             "requestBody":  {
+                                                                                                 "content":  {
+                                                                                                                 "application/json":  {
+                                                                                                                                          "schema":  {
+                                                                                                                                                         "$ref":  "#/components/schemas/ActualizarConfiguracionDocumentalRequest"
+                                                                                                                                                     }
+                                                                                                                                      }
+                                                                                                             },
+                                                                                                 "required":  true
+                                                                                             },
+                                                                             "responses":  {
+                                                                                               "200":  {
+                                                                                                           "description":  "OK",
+                                                                                                           "content":  {
+                                                                                                                           "*/*":  {
+                                                                                                                                       "schema":  {
+                                                                                                                                                      "$ref":  "#/components/schemas/RespuestaApiConfiguracionDocumentalResponse"
+                                                                                                                                                  }
+                                                                                                                                   }
+                                                                                                                       }
+                                                                                                       }
+                                                                                           }
+                                                                         }
+                                                             },
+                  "/api/v1/admin/usuarios":  {
+                                                 "get":  {
+                                                             "tags":  [
+                                                                          "M09 - Administración del Sistema"
+                                                                      ],
+                                                             "summary":  "Listar usuarios SIRD",
+                                                             "operationId":  "listar",
+                                                             "parameters":  [
+                                                                                {
+                                                                                    "name":  "soloActivos",
+                                                                                    "in":  "query",
+                                                                                    "required":  false,
+                                                                                    "schema":  {
+                                                                                                   "type":  "boolean"
+                                                                                               }
+                                                                                }
+                                                                            ],
+                                                             "responses":  {
+                                                                               "200":  {
+                                                                                           "description":  "OK",
+                                                                                           "content":  {
+                                                                                                           "*/*":  {
+                                                                                                                       "schema":  {
+                                                                                                                                      "$ref":  "#/components/schemas/RespuestaApiListUsuarioSirdResponse"
+                                                                                                                                  }
+                                                                                                                   }
+                                                                                                       }
+                                                                                       }
+                                                                           }
+                                                         },
+                                                 "post":  {
+                                                              "tags":  [
+                                                                           "M09 - Administración del Sistema"
+                                                                       ],
+                                                              "summary":  "Crear usuario SIRD",
+                                                              "operationId":  "crear",
+                                                              "requestBody":  {
+                                                                                  "content":  {
+                                                                                                  "application/json":  {
+                                                                                                                           "schema":  {
+                                                                                                                                          "$ref":  "#/components/schemas/CrearUsuarioSirdRequest"
+                                                                                                                                      }
+                                                                                                                       }
+                                                                                              },
+                                                                                  "required":  true
+                                                                              },
+                                                              "responses":  {
+                                                                                "200":  {
+                                                                                            "description":  "OK",
+                                                                                            "content":  {
+                                                                                                            "*/*":  {
+                                                                                                                        "schema":  {
+                                                                                                                                       "$ref":  "#/components/schemas/RespuestaApiUsuarioSirdResponse"
+                                                                                                                                   }
+                                                                                                                    }
+                                                                                                        }
+                                                                                        }
+                                                                            }
+                                                          }
+                                             },
+                  "/api/v1/admin/feriados":  {
+                                                 "get":  {
+                                                             "tags":  [
+                                                                          "M09 - Administración del Sistema"
+                                                                      ],
+                                                             "summary":  "Listar feriados institucionales",
+                                                             "description":  "Lista los feriados institucionales usados para el cálculo de días hábiles.",
+                                                             "operationId":  "listar_1",
+                                                             "parameters":  [
+                                                                                {
+                                                                                    "name":  "soloActivos",
+                                                                                    "in":  "query",
+                                                                                    "required":  false,
+                                                                                    "schema":  {
+                                                                                                   "type":  "boolean",
+                                                                                                   "default":  false
+                                                                                               }
+                                                                                }
+                                                                            ],
+                                                             "responses":  {
+                                                                               "200":  {
+                                                                                           "description":  "OK",
+                                                                                           "content":  {
+                                                                                                           "*/*":  {
+                                                                                                                       "schema":  {
+                                                                                                                                      "$ref":  "#/components/schemas/RespuestaApiListFeriadoInstitucionalResponse"
+                                                                                                                                  }
+                                                                                                                   }
+                                                                                                       }
+                                                                                       }
+                                                                           }
+                                                         },
+                                                 "post":  {
+                                                              "tags":  [
+                                                                           "M09 - Administración del Sistema"
+                                                                       ],
+                                                              "summary":  "Crear feriado institucional",
+                                                              "description":  "Permite registrar un feriado nacional o regional del Cusco.",
+                                                              "operationId":  "crear_1",
+                                                              "requestBody":  {
+                                                                                  "content":  {
+                                                                                                  "application/json":  {
+                                                                                                                           "schema":  {
+                                                                                                                                          "$ref":  "#/components/schemas/CrearFeriadoInstitucionalRequest"
+                                                                                                                                      }
+                                                                                                                       }
+                                                                                              },
+                                                                                  "required":  true
+                                                                              },
+                                                              "responses":  {
+                                                                                "200":  {
+                                                                                            "description":  "OK",
+                                                                                            "content":  {
+                                                                                                            "*/*":  {
+                                                                                                                        "schema":  {
+                                                                                                                                       "$ref":  "#/components/schemas/RespuestaApiFeriadoInstitucionalResponse"
+                                                                                                                                   }
+                                                                                                                    }
+                                                                                                        }
+                                                                                        }
+                                                                            }
+                                                          }
+                                             },
+                  "/api/v1/admin/usuarios/{usuarioId}/estado":  {
+                                                                    "patch":  {
+                                                                                  "tags":  [
+                                                                                               "M09 - Administración del Sistema"
+                                                                                           ],
+                                                                                  "summary":  "Activar o desactivar usuario SIRD",
+                                                                                  "operationId":  "cambiarEstado",
+                                                                                  "parameters":  [
+                                                                                                     {
+                                                                                                         "name":  "usuarioId",
+                                                                                                         "in":  "path",
+                                                                                                         "required":  true,
+                                                                                                         "schema":  {
+                                                                                                                        "type":  "integer",
+                                                                                                                        "format":  "int64"
+                                                                                                                    }
+                                                                                                     }
+                                                                                                 ],
+                                                                                  "requestBody":  {
+                                                                                                      "content":  {
+                                                                                                                      "application/json":  {
+                                                                                                                                               "schema":  {
+                                                                                                                                                              "$ref":  "#/components/schemas/CambiarEstadoUsuarioRequest"
+                                                                                                                                                          }
+                                                                                                                                           }
+                                                                                                                  },
+                                                                                                      "required":  true
+                                                                                                  },
+                                                                                  "responses":  {
+                                                                                                    "200":  {
+                                                                                                                "description":  "OK",
+                                                                                                                "content":  {
+                                                                                                                                "*/*":  {
+                                                                                                                                            "schema":  {
+                                                                                                                                                           "$ref":  "#/components/schemas/RespuestaApiUsuarioSirdResponse"
+                                                                                                                                                       }
+                                                                                                                                        }
+                                                                                                                            }
+                                                                                                            }
+                                                                                                }
+                                                                              }
+                                                                },
+                  "/api/v1/admin/feriados/{feriadoId}/estado":  {
+                                                                    "patch":  {
+                                                                                  "tags":  [
+                                                                                               "M09 - Administración del Sistema"
+                                                                                           ],
+                                                                                  "summary":  "Activar o desactivar feriado institucional",
+                                                                                  "description":  "Permite cambiar el estado activo/inactivo de un feriado.",
+                                                                                  "operationId":  "cambiarEstado_1",
+                                                                                  "parameters":  [
+                                                                                                     {
+                                                                                                         "name":  "feriadoId",
+                                                                                                         "in":  "path",
+                                                                                                         "required":  true,
+                                                                                                         "schema":  {
+                                                                                                                        "type":  "integer",
+                                                                                                                        "format":  "int64"
+                                                                                                                    }
+                                                                                                     }
+                                                                                                 ],
+                                                                                  "requestBody":  {
+                                                                                                      "content":  {
+                                                                                                                      "application/json":  {
+                                                                                                                                               "schema":  {
+                                                                                                                                                              "$ref":  "#/components/schemas/CambiarEstadoFeriadoRequest"
+                                                                                                                                                          }
+                                                                                                                                           }
+                                                                                                                  },
+                                                                                                      "required":  true
+                                                                                                  },
+                                                                                  "responses":  {
+                                                                                                    "200":  {
+                                                                                                                "description":  "OK",
+                                                                                                                "content":  {
+                                                                                                                                "*/*":  {
+                                                                                                                                            "schema":  {
+                                                                                                                                                           "$ref":  "#/components/schemas/RespuestaApiFeriadoInstitucionalResponse"
+                                                                                                                                                       }
+                                                                                                                                        }
+                                                                                                                            }
+                                                                                                            }
+                                                                                                }
+                                                                              }
+                                                                },
+                  "/api/v1/admin/perfiles":  {
+                                                 "get":  {
+                                                             "tags":  [
+                                                                          "M09 - Administración del Sistema"
+                                                                      ],
+                                                             "summary":  "Listar perfiles RBAC disponibles",
+                                                             "operationId":  "listarPerfiles",
+                                                             "responses":  {
+                                                                               "200":  {
+                                                                                           "description":  "OK",
+                                                                                           "content":  {
+                                                                                                           "*/*":  {
+                                                                                                                       "schema":  {
+                                                                                                                                      "$ref":  "#/components/schemas/RespuestaApiListPerfilUsuario"
+                                                                                                                                  }
+                                                                                                                   }
+                                                                                                       }
+                                                                                       }
+                                                                           }
+                                                         }
+                                             },
+                  "/api/v1/admin/configuracion/limites-ec":  {
+                                                                 "get":  {
+                                                                             "tags":  [
+                                                                                          "M09 - Administración del Sistema"
+                                                                                      ],
+                                                                             "summary":  "Listar límites del Espacio Colaborativo",
+                                                                             "operationId":  "listar_2",
+                                                                             "responses":  {
+                                                                                               "200":  {
+                                                                                                           "description":  "OK",
+                                                                                                           "content":  {
+                                                                                                                           "*/*":  {
+                                                                                                                                       "schema":  {
+                                                                                                                                                      "$ref":  "#/components/schemas/RespuestaApiListLimiteEspacioColaborativoResponse"
+                                                                                                                                                  }
+                                                                                                                                   }
+                                                                                                                       }
+                                                                                                       }
+                                                                                           }
+                                                                         }
+                                                             }
+              },
+    "components":  {
+                       "schemas":  {
+                                       "ActualizarUsuarioSirdRequest":  {
+                                                                            "type":  "object",
+                                                                            "properties":  {
+                                                                                               "nombres":  {
+                                                                                                               "type":  "string",
+                                                                                                               "maxLength":  100,
+                                                                                                               "minLength":  2
+                                                                                                           },
+                                                                                               "apellidos":  {
+                                                                                                                 "type":  "string",
+                                                                                                                 "maxLength":  100,
+                                                                                                                 "minLength":  2
+                                                                                                             },
+                                                                                               "correo":  {
+                                                                                                              "type":  "string",
+                                                                                                              "format":  "email",
+                                                                                                              "maxLength":  150,
+                                                                                                              "minLength":  0
+                                                                                                          },
+                                                                                               "cargo":  {
+                                                                                                             "type":  "string",
+                                                                                                             "maxLength":  120,
+                                                                                                             "minLength":  2
+                                                                                                         },
+                                                                                               "unidad":  {
+                                                                                                              "type":  "string",
+                                                                                                              "maxLength":  150,
+                                                                                                              "minLength":  2
+                                                                                                          },
+                                                                                               "perfil":  {
+                                                                                                              "type":  "string",
+                                                                                                              "enum":  [
+                                                                                                                           "ADMIN_SIRD",
+                                                                                                                           "GERENTE_SUBGERENTE",
+                                                                                                                           "JEFE_DEPENDENCIA_PROYECTO",
+                                                                                                                           "ESPECIALISTA_RESPONSABLE",
+                                                                                                                           "TECNICO_ADMINISTRATIVO"
+                                                                                                                       ]
+                                                                                                          }
+                                                                                           },
+                                                                            "required":  [
+                                                                                             "apellidos",
+                                                                                             "cargo",
+                                                                                             "correo",
+                                                                                             "nombres",
+                                                                                             "perfil",
+                                                                                             "unidad"
+                                                                                         ]
+                                                                        },
+                                       "RespuestaApiUsuarioSirdResponse":  {
+                                                                               "type":  "object",
+                                                                               "properties":  {
+                                                                                                  "resultado":  {
+                                                                                                                    "type":  "boolean"
+                                                                                                                },
+                                                                                                  "mensaje":  {
+                                                                                                                  "type":  "string"
+                                                                                                              },
+                                                                                                  "datos":  {
+                                                                                                                "$ref":  "#/components/schemas/UsuarioSirdResponse"
+                                                                                                            },
+                                                                                                  "fechaHora":  {
+                                                                                                                    "type":  "string",
+                                                                                                                    "format":  "date-time"
+                                                                                                                }
+                                                                                              }
+                                                                           },
+                                       "UsuarioSirdResponse":  {
+                                                                   "type":  "object",
+                                                                   "properties":  {
+                                                                                      "id":  {
+                                                                                                 "type":  "integer",
+                                                                                                 "format":  "int64"
+                                                                                             },
+                                                                                      "nombres":  {
+                                                                                                      "type":  "string"
+                                                                                                  },
+                                                                                      "apellidos":  {
+                                                                                                        "type":  "string"
+                                                                                                    },
+                                                                                      "correo":  {
+                                                                                                     "type":  "string"
+                                                                                                 },
+                                                                                      "cargo":  {
+                                                                                                    "type":  "string"
+                                                                                                },
+                                                                                      "unidad":  {
+                                                                                                     "type":  "string"
+                                                                                                 },
+                                                                                      "perfil":  {
+                                                                                                     "type":  "string",
+                                                                                                     "enum":  [
+                                                                                                                  "ADMIN_SIRD",
+                                                                                                                  "GERENTE_SUBGERENTE",
+                                                                                                                  "JEFE_DEPENDENCIA_PROYECTO",
+                                                                                                                  "ESPECIALISTA_RESPONSABLE",
+                                                                                                                  "TECNICO_ADMINISTRATIVO"
+                                                                                                              ]
+                                                                                                 },
+                                                                                      "activo":  {
+                                                                                                     "type":  "boolean"
+                                                                                                 },
+                                                                                      "creadoEn":  {
+                                                                                                       "type":  "string",
+                                                                                                       "format":  "date-time"
+                                                                                                   },
+                                                                                      "actualizadoEn":  {
+                                                                                                            "type":  "string",
+                                                                                                            "format":  "date-time"
+                                                                                                        }
+                                                                                  }
+                                                               },
+                                       "ActualizarFeriadoInstitucionalRequest":  {
+                                                                                     "type":  "object",
+                                                                                     "properties":  {
+                                                                                                        "nombre":  {
+                                                                                                                       "type":  "string",
+                                                                                                                       "maxLength":  150,
+                                                                                                                       "minLength":  3
+                                                                                                                   },
+                                                                                                        "fecha":  {
+                                                                                                                      "type":  "string",
+                                                                                                                      "format":  "date"
+                                                                                                                  },
+                                                                                                        "tipo":  {
+                                                                                                                     "type":  "string",
+                                                                                                                     "enum":  [
+                                                                                                                                  "NACIONAL",
+                                                                                                                                  "REGIONAL_CUSCO"
+                                                                                                                              ]
+                                                                                                                 },
+                                                                                                        "recurrenteAnual":  {
+                                                                                                                                "type":  "boolean"
+                                                                                                                            }
+                                                                                                    },
+                                                                                     "required":  [
+                                                                                                      "fecha",
+                                                                                                      "nombre",
+                                                                                                      "tipo"
+                                                                                                  ]
+                                                                                 },
+                                       "FeriadoInstitucionalResponse":  {
+                                                                            "type":  "object",
+                                                                            "properties":  {
+                                                                                               "id":  {
+                                                                                                          "type":  "integer",
+                                                                                                          "format":  "int64"
+                                                                                                      },
+                                                                                               "nombre":  {
+                                                                                                              "type":  "string"
+                                                                                                          },
+                                                                                               "fecha":  {
+                                                                                                             "type":  "string",
+                                                                                                             "format":  "date"
+                                                                                                         },
+                                                                                               "tipo":  {
+                                                                                                            "type":  "string"
+                                                                                                        },
+                                                                                               "recurrenteAnual":  {
+                                                                                                                       "type":  "boolean"
+                                                                                                                   },
+                                                                                               "activo":  {
+                                                                                                              "type":  "boolean"
+                                                                                                          },
+                                                                                               "creadoEn":  {
+                                                                                                                "type":  "string",
+                                                                                                                "format":  "date-time"
+                                                                                                            },
+                                                                                               "actualizadoEn":  {
+                                                                                                                     "type":  "string",
+                                                                                                                     "format":  "date-time"
+                                                                                                                 }
+                                                                                           }
+                                                                        },
+                                       "RespuestaApiFeriadoInstitucionalResponse":  {
+                                                                                        "type":  "object",
+                                                                                        "properties":  {
+                                                                                                           "resultado":  {
+                                                                                                                             "type":  "boolean"
+                                                                                                                         },
+                                                                                                           "mensaje":  {
+                                                                                                                           "type":  "string"
+                                                                                                                       },
+                                                                                                           "datos":  {
+                                                                                                                         "$ref":  "#/components/schemas/FeriadoInstitucionalResponse"
+                                                                                                                     },
+                                                                                                           "fechaHora":  {
+                                                                                                                             "type":  "string",
+                                                                                                                             "format":  "date-time"
+                                                                                                                         }
+                                                                                                       }
+                                                                                    },
+                                       "ActualizarConfiguracionSeguridadJwtRequest":  {
+                                                                                          "type":  "object",
+                                                                                          "properties":  {
+                                                                                                             "accessTokenHoras":  {
+                                                                                                                                      "type":  "integer",
+                                                                                                                                      "format":  "int32",
+                                                                                                                                      "maximum":  24,
+                                                                                                                                      "minimum":  1
+                                                                                                                                  },
+                                                                                                             "refreshTokenDias":  {
+                                                                                                                                      "type":  "integer",
+                                                                                                                                      "format":  "int32",
+                                                                                                                                      "maximum":  90,
+                                                                                                                                      "minimum":  1
+                                                                                                                                  },
+                                                                                                             "intentosFallidosMax":  {
+                                                                                                                                         "type":  "integer",
+                                                                                                                                         "format":  "int32",
+                                                                                                                                         "maximum":  10,
+                                                                                                                                         "minimum":  3
+                                                                                                                                     },
+                                                                                                             "bloqueoMinutos":  {
+                                                                                                                                    "type":  "integer",
+                                                                                                                                    "format":  "int32",
+                                                                                                                                    "maximum":  60,
+                                                                                                                                    "minimum":  5
+                                                                                                                                }
+                                                                                                         },
+                                                                                          "required":  [
+                                                                                                           "accessTokenHoras",
+                                                                                                           "bloqueoMinutos",
+                                                                                                           "intentosFallidosMax",
+                                                                                                           "refreshTokenDias"
+                                                                                                       ]
+                                                                                      },
+                                       "ConfiguracionSeguridadJwtResponse":  {
+                                                                                 "type":  "object",
+                                                                                 "properties":  {
+                                                                                                    "id":  {
+                                                                                                               "type":  "integer",
+                                                                                                               "format":  "int64"
+                                                                                                           },
+                                                                                                    "accessTokenHoras":  {
+                                                                                                                             "type":  "integer",
+                                                                                                                             "format":  "int32"
+                                                                                                                         },
+                                                                                                    "refreshTokenDias":  {
+                                                                                                                             "type":  "integer",
+                                                                                                                             "format":  "int32"
+                                                                                                                         },
+                                                                                                    "intentosFallidosMax":  {
+                                                                                                                                "type":  "integer",
+                                                                                                                                "format":  "int32"
+                                                                                                                            },
+                                                                                                    "bloqueoMinutos":  {
+                                                                                                                           "type":  "integer",
+                                                                                                                           "format":  "int32"
+                                                                                                                       },
+                                                                                                    "versionSeguridad":  {
+                                                                                                                             "type":  "integer",
+                                                                                                                             "format":  "int64"
+                                                                                                                         },
+                                                                                                    "activo":  {
+                                                                                                                   "type":  "boolean"
+                                                                                                               },
+                                                                                                    "creadoEn":  {
+                                                                                                                     "type":  "string",
+                                                                                                                     "format":  "date-time"
+                                                                                                                 },
+                                                                                                    "actualizadoEn":  {
+                                                                                                                          "type":  "string",
+                                                                                                                          "format":  "date-time"
+                                                                                                                      }
+                                                                                                }
+                                                                             },
+                                       "RespuestaApiConfiguracionSeguridadJwtResponse":  {
+                                                                                             "type":  "object",
+                                                                                             "properties":  {
+                                                                                                                "resultado":  {
+                                                                                                                                  "type":  "boolean"
+                                                                                                                              },
+                                                                                                                "mensaje":  {
+                                                                                                                                "type":  "string"
+                                                                                                                            },
+                                                                                                                "datos":  {
+                                                                                                                              "$ref":  "#/components/schemas/ConfiguracionSeguridadJwtResponse"
+                                                                                                                          },
+                                                                                                                "fechaHora":  {
+                                                                                                                                  "type":  "string",
+                                                                                                                                  "format":  "date-time"
+                                                                                                                              }
+                                                                                                            }
+                                                                                         },
+                                       "ActualizarLimiteEspacioColaborativoRequest":  {
+                                                                                          "type":  "object",
+                                                                                          "properties":  {
+                                                                                                             "limiteGb":  {
+                                                                                                                              "type":  "integer",
+                                                                                                                              "format":  "int32",
+                                                                                                                              "maximum":  100,
+                                                                                                                              "minimum":  1
+                                                                                                                          }
+                                                                                                         },
+                                                                                          "required":  [
+                                                                                                           "limiteGb"
+                                                                                                       ]
+                                                                                      },
+                                       "LimiteEspacioColaborativoResponse":  {
+                                                                                 "type":  "object",
+                                                                                 "properties":  {
+                                                                                                    "id":  {
+                                                                                                               "type":  "integer",
+                                                                                                               "format":  "int64"
+                                                                                                           },
+                                                                                                    "tipoEspacio":  {
+                                                                                                                        "type":  "string",
+                                                                                                                        "enum":  [
+                                                                                                                                     "EXPEDIENTE",
+                                                                                                                                     "PLAN",
+                                                                                                                                     "PERFIL"
+                                                                                                                                 ]
+                                                                                                                    },
+                                                                                                    "limiteGb":  {
+                                                                                                                     "type":  "integer",
+                                                                                                                     "format":  "int32"
+                                                                                                                 },
+                                                                                                    "activo":  {
+                                                                                                                   "type":  "boolean"
+                                                                                                               },
+                                                                                                    "creadoEn":  {
+                                                                                                                     "type":  "string",
+                                                                                                                     "format":  "date-time"
+                                                                                                                 },
+                                                                                                    "actualizadoEn":  {
+                                                                                                                          "type":  "string",
+                                                                                                                          "format":  "date-time"
+                                                                                                                      }
+                                                                                                }
+                                                                             },
+                                       "RespuestaApiLimiteEspacioColaborativoResponse":  {
+                                                                                             "type":  "object",
+                                                                                             "properties":  {
+                                                                                                                "resultado":  {
+                                                                                                                                  "type":  "boolean"
+                                                                                                                              },
+                                                                                                                "mensaje":  {
+                                                                                                                                "type":  "string"
+                                                                                                                            },
+                                                                                                                "datos":  {
+                                                                                                                              "$ref":  "#/components/schemas/LimiteEspacioColaborativoResponse"
+                                                                                                                          },
+                                                                                                                "fechaHora":  {
+                                                                                                                                  "type":  "string",
+                                                                                                                                  "format":  "date-time"
+                                                                                                                              }
+                                                                                                            }
+                                                                                         },
+                                       "ActualizarConfiguracionDocumentalRequest":  {
+                                                                                        "type":  "object",
+                                                                                        "properties":  {
+                                                                                                           "periodoRetencionAnios":  {
+                                                                                                                                         "type":  "integer",
+                                                                                                                                         "format":  "int32",
+                                                                                                                                         "maximum":  50,
+                                                                                                                                         "minimum":  1
+                                                                                                                                     },
+                                                                                                           "clasificacionPorDefecto":  {
+                                                                                                                                           "type":  "string",
+                                                                                                                                           "enum":  [
+                                                                                                                                                        "PUBLICO",
+                                                                                                                                                        "INTERNO",
+                                                                                                                                                        "CONFIDENCIAL",
+                                                                                                                                                        "RESTRINGIDO"
+                                                                                                                                                    ]
+                                                                                                                                       }
+                                                                                                       },
+                                                                                        "required":  [
+                                                                                                         "clasificacionPorDefecto",
+                                                                                                         "periodoRetencionAnios"
+                                                                                                     ]
+                                                                                    },
+                                       "ConfiguracionDocumentalResponse":  {
+                                                                               "type":  "object",
+                                                                               "properties":  {
+                                                                                                  "id":  {
+                                                                                                             "type":  "integer",
+                                                                                                             "format":  "int64"
+                                                                                                         },
+                                                                                                  "periodoRetencionAnios":  {
+                                                                                                                                "type":  "integer",
+                                                                                                                                "format":  "int32"
+                                                                                                                            },
+                                                                                                  "clasificacionPorDefecto":  {
+                                                                                                                                  "type":  "string"
+                                                                                                                              },
+                                                                                                  "activo":  {
+                                                                                                                 "type":  "boolean"
+                                                                                                             },
+                                                                                                  "creadoEn":  {
+                                                                                                                   "type":  "string",
+                                                                                                                   "format":  "date-time"
+                                                                                                               },
+                                                                                                  "actualizadoEn":  {
+                                                                                                                        "type":  "string",
+                                                                                                                        "format":  "date-time"
+                                                                                                                    }
+                                                                                              }
+                                                                           },
+                                       "RespuestaApiConfiguracionDocumentalResponse":  {
+                                                                                           "type":  "object",
+                                                                                           "properties":  {
+                                                                                                              "resultado":  {
+                                                                                                                                "type":  "boolean"
+                                                                                                                            },
+                                                                                                              "mensaje":  {
+                                                                                                                              "type":  "string"
+                                                                                                                          },
+                                                                                                              "datos":  {
+                                                                                                                            "$ref":  "#/components/schemas/ConfiguracionDocumentalResponse"
+                                                                                                                        },
+                                                                                                              "fechaHora":  {
+                                                                                                                                "type":  "string",
+                                                                                                                                "format":  "date-time"
+                                                                                                                            }
+                                                                                                          }
+                                                                                       },
+                                       "CrearUsuarioSirdRequest":  {
+                                                                       "type":  "object",
+                                                                       "properties":  {
+                                                                                          "nombres":  {
+                                                                                                          "type":  "string",
+                                                                                                          "maxLength":  100,
+                                                                                                          "minLength":  2
+                                                                                                      },
+                                                                                          "apellidos":  {
+                                                                                                            "type":  "string",
+                                                                                                            "maxLength":  100,
+                                                                                                            "minLength":  2
+                                                                                                        },
+                                                                                          "correo":  {
+                                                                                                         "type":  "string",
+                                                                                                         "format":  "email",
+                                                                                                         "maxLength":  150,
+                                                                                                         "minLength":  0
+                                                                                                     },
+                                                                                          "cargo":  {
+                                                                                                        "type":  "string",
+                                                                                                        "maxLength":  120,
+                                                                                                        "minLength":  2
+                                                                                                    },
+                                                                                          "unidad":  {
+                                                                                                         "type":  "string",
+                                                                                                         "maxLength":  150,
+                                                                                                         "minLength":  2
+                                                                                                     },
+                                                                                          "perfil":  {
+                                                                                                         "type":  "string",
+                                                                                                         "enum":  [
+                                                                                                                      "ADMIN_SIRD",
+                                                                                                                      "GERENTE_SUBGERENTE",
+                                                                                                                      "JEFE_DEPENDENCIA_PROYECTO",
+                                                                                                                      "ESPECIALISTA_RESPONSABLE",
+                                                                                                                      "TECNICO_ADMINISTRATIVO"
+                                                                                                                  ]
+                                                                                                     }
+                                                                                      },
+                                                                       "required":  [
+                                                                                        "apellidos",
+                                                                                        "cargo",
+                                                                                        "correo",
+                                                                                        "nombres",
+                                                                                        "perfil",
+                                                                                        "unidad"
+                                                                                    ]
+                                                                   },
+                                       "CrearFeriadoInstitucionalRequest":  {
+                                                                                "type":  "object",
+                                                                                "properties":  {
+                                                                                                   "nombre":  {
+                                                                                                                  "type":  "string",
+                                                                                                                  "maxLength":  150,
+                                                                                                                  "minLength":  3
+                                                                                                              },
+                                                                                                   "fecha":  {
+                                                                                                                 "type":  "string",
+                                                                                                                 "format":  "date"
+                                                                                                             },
+                                                                                                   "tipo":  {
+                                                                                                                "type":  "string",
+                                                                                                                "enum":  [
+                                                                                                                             "NACIONAL",
+                                                                                                                             "REGIONAL_CUSCO"
+                                                                                                                         ]
+                                                                                                            },
+                                                                                                   "recurrenteAnual":  {
+                                                                                                                           "type":  "boolean"
+                                                                                                                       }
+                                                                                               },
+                                                                                "required":  [
+                                                                                                 "fecha",
+                                                                                                 "nombre",
+                                                                                                 "tipo"
+                                                                                             ]
+                                                                            },
+                                       "CambiarEstadoUsuarioRequest":  {
+                                                                           "type":  "object",
+                                                                           "properties":  {
+                                                                                              "activo":  {
+                                                                                                             "type":  "boolean"
+                                                                                                         }
+                                                                                          },
+                                                                           "required":  [
+                                                                                            "activo"
+                                                                                        ]
+                                                                       },
+                                       "CambiarEstadoFeriadoRequest":  {
+                                                                           "type":  "object",
+                                                                           "properties":  {
+                                                                                              "activo":  {
+                                                                                                             "type":  "boolean"
+                                                                                                         }
+                                                                                          },
+                                                                           "required":  [
+                                                                                            "activo"
+                                                                                        ]
+                                                                       },
+                                       "RespuestaApiListUsuarioSirdResponse":  {
+                                                                                   "type":  "object",
+                                                                                   "properties":  {
+                                                                                                      "resultado":  {
+                                                                                                                        "type":  "boolean"
+                                                                                                                    },
+                                                                                                      "mensaje":  {
+                                                                                                                      "type":  "string"
+                                                                                                                  },
+                                                                                                      "datos":  {
+                                                                                                                    "type":  "array",
+                                                                                                                    "items":  {
+                                                                                                                                  "$ref":  "#/components/schemas/UsuarioSirdResponse"
+                                                                                                                              }
+                                                                                                                },
+                                                                                                      "fechaHora":  {
+                                                                                                                        "type":  "string",
+                                                                                                                        "format":  "date-time"
+                                                                                                                    }
+                                                                                                  }
+                                                                               },
+                                       "RespuestaApiListPerfilUsuario":  {
+                                                                             "type":  "object",
+                                                                             "properties":  {
+                                                                                                "resultado":  {
+                                                                                                                  "type":  "boolean"
+                                                                                                              },
+                                                                                                "mensaje":  {
+                                                                                                                "type":  "string"
+                                                                                                            },
+                                                                                                "datos":  {
+                                                                                                              "type":  "array",
+                                                                                                              "items":  {
+                                                                                                                            "type":  "string",
+                                                                                                                            "enum":  [
+                                                                                                                                         "ADMIN_SIRD",
+                                                                                                                                         "GERENTE_SUBGERENTE",
+                                                                                                                                         "JEFE_DEPENDENCIA_PROYECTO",
+                                                                                                                                         "ESPECIALISTA_RESPONSABLE",
+                                                                                                                                         "TECNICO_ADMINISTRATIVO"
+                                                                                                                                     ]
+                                                                                                                        }
+                                                                                                          },
+                                                                                                "fechaHora":  {
+                                                                                                                  "type":  "string",
+                                                                                                                  "format":  "date-time"
+                                                                                                              }
+                                                                                            }
+                                                                         },
+                                       "RespuestaApiListFeriadoInstitucionalResponse":  {
+                                                                                            "type":  "object",
+                                                                                            "properties":  {
+                                                                                                               "resultado":  {
+                                                                                                                                 "type":  "boolean"
+                                                                                                                             },
+                                                                                                               "mensaje":  {
+                                                                                                                               "type":  "string"
+                                                                                                                           },
+                                                                                                               "datos":  {
+                                                                                                                             "type":  "array",
+                                                                                                                             "items":  {
+                                                                                                                                           "$ref":  "#/components/schemas/FeriadoInstitucionalResponse"
+                                                                                                                                       }
+                                                                                                                         },
+                                                                                                               "fechaHora":  {
+                                                                                                                                 "type":  "string",
+                                                                                                                                 "format":  "date-time"
+                                                                                                                             }
+                                                                                                           }
+                                                                                        },
+                                       "RespuestaApiListLimiteEspacioColaborativoResponse":  {
+                                                                                                 "type":  "object",
+                                                                                                 "properties":  {
+                                                                                                                    "resultado":  {
+                                                                                                                                      "type":  "boolean"
+                                                                                                                                  },
+                                                                                                                    "mensaje":  {
+                                                                                                                                    "type":  "string"
+                                                                                                                                },
+                                                                                                                    "datos":  {
+                                                                                                                                  "type":  "array",
+                                                                                                                                  "items":  {
+                                                                                                                                                "$ref":  "#/components/schemas/LimiteEspacioColaborativoResponse"
+                                                                                                                                            }
+                                                                                                                              },
+                                                                                                                    "fechaHora":  {
+                                                                                                                                      "type":  "string",
+                                                                                                                                      "format":  "date-time"
+                                                                                                                                  }
+                                                                                                                }
+                                                                                             }
+                                   }
+                   }
+}

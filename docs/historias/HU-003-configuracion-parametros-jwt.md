@@ -1,4 +1,4 @@
-﻿# HU-003 - Admin configura parámetros de seguridad JWT
+# HU-003 - Admin configura parámetros de seguridad JWT
 
 **Proyecto:** SIRD  
 **Versión:** v1.0  

@@ -1,4 +1,4 @@
-﻿# Informe de Avance Backend SIRD — Día 2
+# Informe de Avance Backend SIRD — Día 2
 
 **Proyecto:** Sistema Institucional de Repositorio Digital - SIRD  
 **Institución:** Gobierno Regional del Cusco  
